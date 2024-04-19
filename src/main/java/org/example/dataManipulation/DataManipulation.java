@@ -22,7 +22,7 @@ public class DataManipulation {
         var userRegistry = new UserRegistry();
 
         for (int i = 0; i < count; i++) {
-            var factoryUser = random.nextInt(2) == 0 ? StudentFactory.getInstance() : TutorFactory.getInstance();
+            var factoryUser = random.nextInt(2) == 0 ? new StudentFactory() : new TutorFactory();
             var user = factoryUser.createUser();
             if(userRegistry.hasUser(user)) i--;
             else userRegistry.addUser(user);
@@ -31,17 +31,19 @@ public class DataManipulation {
         this.userRegistry = userRegistry;
     }
     public void generateBookshelf(){
-        var bookshelf = new Bookshelf();
-        do{
-            for (int i = 0; i < 50; i++) {
-                var factoryBook = random.nextInt(2) == 0 ? EnglishBookFactory.getInstance() : RussianBookFactory.getInstance();
-                Bookable book = random.nextInt(2) == 0 ?factoryBook.createFiction() : factoryBook.createTextBook();
-                if (bookshelf.hasBook(book))i--;
-                else bookshelf.addBook(book);
-            }
-        }while (bookshelf.sizeFiction()<50||bookshelf.sizeEnglishFiction()<15||bookshelf.sizeRussianFiction()<20||bookshelf.sizeTextBook()<50||bookshelf.sizeRussianTextBook()<20||bookshelf.sizeEnglishTextBook()<15);
+        if (bookshelf == null) {
+            var bookshelf = new Bookshelf();
+            do{
+                for (int i = 0; i < 50; i++) {
+                    var factoryBook = random.nextInt(2) == 0 ? new EnglishBookFactory() : new RussianBookFactory();
+                    Bookable book = random.nextInt(2) == 0 ? factoryBook.createFiction() : factoryBook.createTextBook();
+                    if (bookshelf.hasBook(book))i--;
+                    else bookshelf.addBook(book);
+                }
+            }while (bookshelf.sizeFiction()<50||bookshelf.sizeEnglishFiction()<15||bookshelf.sizeRussianFiction()<20||bookshelf.sizeTextBook()<50||bookshelf.sizeRussianTextBook()<20||bookshelf.sizeEnglishTextBook()<15);
 
-        this.bookshelf = bookshelf;
+            this.bookshelf = bookshelf;
+        }
     }
 
     public void generateBook2Users(){
