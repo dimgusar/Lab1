@@ -17,7 +17,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -31,9 +30,10 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2NHpsUpFjKMvhWODf7bF2EyWVyu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,9 +52,6 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -102,9 +99,11 @@
       <workItem from="1680109217291" duration="167000" />
       <workItem from="1680196687471" duration="18000" />
       <workItem from="1680199566890" duration="64000" />
-      <workItem from="1712918173337" duration="6076000" />
-      <workItem from="1712954551154" duration="199000" />
-      <workItem from="1712955363528" duration="12532000" />
+      <workItem from="1712954807973" duration="410000" />
+      <workItem from="1713793794395" duration="77000" />
+      <workItem from="1713793964275" duration="267000" />
+      <workItem from="1713993326406" duration="9545000" />
+      <workItem from="1714134943630" duration="14000" />
     </task>
     <servers />
   </component>

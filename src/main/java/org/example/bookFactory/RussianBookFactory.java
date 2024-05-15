@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RussianBookFactory implements BookFactory {
-    private static RussianBookFactory instance;
     private final Random random = new Random();
-
+    private DataRussianBook dataRussianBook;
     //fiction
     private final ArrayList<String> types;
     private final ArrayList<String> firstNames;
@@ -25,26 +24,21 @@ public class RussianBookFactory implements BookFactory {
     private final ArrayList<String> disciplines;
     private final ArrayList<String> departments;
 
-    private RussianBookFactory() {
+    public RussianBookFactory() {
+        dataRussianBook = DataRussianBook.getInstance();
         //Fiction
-        types = ExcelReader.read("./data/Жанры художественной литературы.xlsx", 0);
-        authors = ExcelReader.read("./data/Авторы художественной литературы.xlsx", 0);
-        firstNames = ExcelReader.read("./data/Русская художественная литература.xlsx", 0);
-        prepositions = ExcelReader.read("./data/Русская художественная литература.xlsx", 1);
-        secondNames = ExcelReader.read("./data/Русская художественная литература.xlsx", 2);
+        types = dataRussianBook.getTypes();
+        authors = dataRussianBook.getAuthors();
+        firstNames = dataRussianBook.getFirstNames();
+        prepositions = dataRussianBook.getPrepositions();
+        secondNames = dataRussianBook.getSecondNames();
 
         //Textbook
-        types_textbook = ExcelReader.read("./data/Виды учебных пособий на русском.xlsx", 0);
-        disciplines = ExcelReader.read("./data/Русские учебные дисциплины.xlsx", 0);
-        departments = ExcelReader.read("./data/Русские учебные дисциплины.xlsx", 1);
+        types_textbook = dataRussianBook.getTypes_textbook();
+        disciplines = dataRussianBook.getDisciplines();
+        departments = dataRussianBook.getDepartments();
     }
 
-    public static RussianBookFactory getInstance() {
-        if (instance == null) {
-            instance = new RussianBookFactory();
-        }
-        return instance;
-    }
     @Override
     public ITextBook createTextBook() {
         var type = types_textbook.get(random.nextInt(types_textbook.size()));

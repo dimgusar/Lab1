@@ -4,8 +4,8 @@ public class RussianTextBook extends TextBook implements ITextBook {
     private String type;
     private String department;
 
-    public RussianTextBook(String titl, String discipline, String type, String department) {
-        super(titl, discipline);
+    public RussianTextBook(String title, String discipline, String type, String department) {
+        super(title, discipline);
         this.type = type;
         this.department = department;
     }

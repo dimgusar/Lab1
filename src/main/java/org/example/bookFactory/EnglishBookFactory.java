@@ -1,6 +1,5 @@
 package org.example.bookFactory;
 
-import org.example.excelProvider.ExcelReader;
 import org.example.bookshelf.books.EnglishFiction;
 import org.example.bookshelf.books.EnglishTextBook;
 import org.example.bookshelf.books.IFiction;
@@ -10,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EnglishBookFactory implements BookFactory {
-    private static EnglishBookFactory instance;
     private final Random random = new Random();
-
+    private DataEnglishBook dataStoreFromExcel;
     //Fiction
     private final ArrayList<String> types;
     private final ArrayList<String> firstNames;
@@ -25,26 +23,21 @@ public class EnglishBookFactory implements BookFactory {
     private final ArrayList<String> authors_textbook;
     private final ArrayList<String> universitys;
 
-    private EnglishBookFactory() {
+    public EnglishBookFactory() {
+        dataStoreFromExcel = DataEnglishBook.getInstance();
         //Fiction
-        types = ExcelReader.read("./data/Жанры художественной литературы.xlsx", 1);
-        authors = ExcelReader.read("./data/Авторы художественной литературы.xlsx", 1);
-        firstNames = ExcelReader.read("./data/Английская художественная литература.xlsx", 0);
-        secondNames = ExcelReader.read("./data/Английская художественная литература.xlsx", 1);
+        types = dataStoreFromExcel.getTypes();
+        authors = dataStoreFromExcel.getAuthors();
+        firstNames = dataStoreFromExcel.getFirstNames();
+        secondNames = dataStoreFromExcel.getSecondNames();
 
         //textbook
-        disciplines = ExcelReader.read("./data/Английские учебные дисциплины.xlsx", 0);
-        levels = ExcelReader.read("./data/Уровни литературы.xlsx", 0);
-        authors_textbook = ExcelReader.read("./data/Английские преподаватели.xlsx", 0);
-        universitys = ExcelReader.read("./data/Список университетов.xlsx", 0);
+        disciplines = dataStoreFromExcel.getDisciplines();
+        levels = dataStoreFromExcel.getLevels();
+        authors_textbook = dataStoreFromExcel.getAuthors_textbook();
+        universitys = dataStoreFromExcel.getUniversitys();
     }
 
-    public static EnglishBookFactory getInstance() {
-        if (instance == null) {
-            instance = new EnglishBookFactory();
-        }
-        return instance;
-    }
 
     @Override
     public ITextBook createTextBook() {
